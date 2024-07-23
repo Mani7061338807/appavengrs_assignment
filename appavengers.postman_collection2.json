@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "187c8961-b768-4a08-80fd-d813e16954a3",
+		"name": "appavengers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19840600",
+		"_collection_link": "https://appavengers-2218.postman.co/workspace/appavengers-Workspace~8e658608-86d9-4944-adda-cc7b86788e39/collection/19840600-187c8961-b768-4a08-80fd-d813e16954a3?action=share&source=collection_link&creator=19840600"
+	},
+	"item": [
+		{
+			"name": "googleSheet",
+			"item": [
+				{
+					"name": "getGoogleSheetData",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "sheetData",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnb29nbGVJZCI6IjExNjYzODgzNTg4MjA3NzM5ODM2MSIsImlhdCI6MTcyMTczMzYwMCwiZXhwIjoxNzIxODIwMDAwfQ._S9PmG9cpQOTNCafUsOanVG-ZUJ8yj9wv2-ZIuc5CCY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/sheets/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"sheets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1GUQjiCaPx6ktmC3_OTxFizASp3XguiQi7zFGrve36Ik"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "149"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"95-JHhGcO4rv9CJnKM5Er2JjmsQKp4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Jul 2024 11:28:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"range\": \"Sheet1!A1:Z1000\",\n    \"majorDimension\": \"ROWS\",\n    \"values\": [\n        [\n            \"test\"\n        ],\n        [\n            \"test2\"\n        ],\n        [\n            \"appavengers\"\n        ],\n        [\n            \"test34\"\n        ],\n        [\n            \"test one more time\"\n        ],\n        [\n            \"testing again\"\n        ]\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "postDatatoSheet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnb29nbGVJZCI6IjExNjYzODgzNTg4MjA3NzM5ODM2MSIsImlhdCI6MTcyMTczMzYwMCwiZXhwIjoxNzIxODIwMDAwfQ._S9PmG9cpQOTNCafUsOanVG-ZUJ8yj9wv2-ZIuc5CCY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\":\"new data mani\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/sheets/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"sheets",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1GUQjiCaPx6ktmC3_OTxFizASp3XguiQi7zFGrve36Ik"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "postDatatoSheet",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnb29nbGVJZCI6IjExNjYzODgzNTg4MjA3NzM5ODM2MSIsImlhdCI6MTcyMTczNjMzMSwiZXhwIjoxNzIxODIyNzMxfQ.yDvBgM-oTShLof9K7NQV8gAzL621LmdTc_nTFcH_v5o",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\":\"testing again\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/sheets/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"sheets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1GUQjiCaPx6ktmC3_OTxFizASp3XguiQi7zFGrve36Ik"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:3000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-ZaZp2sPluFFpKi7yM/g1Jh6ETdU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Jul 2024 12:06:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Data posted successfully\",\n    \"result\": {\n        \"values\": [\n            [\n                \"testing again\"\n            ]\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,27 +1,21 @@
 const jwt = require('jsonwebtoken');
 
-const authenticateUser = (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  console.log("authheader",authHeader)
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res
-      .status(401)
-      .json({ message: "Access Denied: No Token Provided!" });
-  }
-
-  const token = authHeader.split(" ")[1];
+const verifyToken = (req, res, next) => {
+  const token = req.headers.token;
+ 
+  console.log(req.headers);
   if (!token) {
-    return res
-      .status(401)
-      .json({ message: "Access Denied: No Token Provided!" });
+    return res.status(401).send("Access token is missing or invalid");
   }
 
+  // const token = authHeader.split(" ")[1];
+  console.log('recieved token is',token, process.env.JWT_SECRET);
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SERECT || "majdjsajdh");
-    req.userId = decoded.userId;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
     next();
-  } catch (err) {
-    return res.status(401).json({ message: "Invalid Token" });
+  } catch (error) {
+    return res.status(401).send("Invalid token");
   }
 };
 
@@ -33,4 +27,4 @@ const isAuthenticated = (req,res,next) => {
   next();
 }
 
-module.exports = isAuthenticated;
+module.exports = verifyToken;

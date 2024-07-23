@@ -15,7 +15,7 @@ passport.use(
       try {
         let user = await User.findOne({ googleId: profile.id });
         if (!user) {
-           user = new User({
+          user = new User({
             googleId: profile.id,
             displayName: profile.displayName,
             email: profile.emails[0].value,
@@ -39,21 +39,17 @@ passport.use(
 
 // Serialize and deserialize user
 passport.serializeUser((user, done) => {
-  console.log("Serializing user:", user); // Add this log
-  done(null, user.id);
+  done(null, user._id);
 });
 
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await User.findById(id);
-    console.log("Deserializing user:", user); // Add this log
     done(null, user);
   } catch (error) {
     done(error, null);
   }
 });
-
-
 
 const googleLogin = passport.authenticate("google", {
   scope: ["profile", "email", "https://www.googleapis.com/auth/spreadsheets"],
@@ -61,6 +57,16 @@ const googleLogin = passport.authenticate("google", {
 
 const googleCallback = (req, res) => {
   if (req.user) {
+
+    const token = jwt.sign(
+      { googleId: req.user.googleId},
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "24h",
+      }
+    );
+    console.log('generated token is',token)
+    res.cookie("token", token, { httpOnly: true });
     res.redirect("http://localhost:3000/site");
   } else {
     res.status(401).json({ error: "Google authentication failed" });

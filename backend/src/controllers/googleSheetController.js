@@ -82,7 +82,7 @@ const postDataToSheet = async (req, res) => {
       return res.status(401).send({ message: "User not found" });
     }
     const accessToken = user.accessToken;
-    console.log("sheet id", sheetId);
+   
     const spreadsheet = user.spreadsheets.find((sheet) => sheet.spreadsheetId === sheetId);
     if (!spreadsheet) {
       return res.status(404).json({ error: "Spreadsheet not found" });
@@ -108,8 +108,8 @@ const postDataToSheet = async (req, res) => {
         values: [[data]],
       },
     });
-
-    res.status(200).json({ message: "Data posted successfully", updatedData });
+    const result = updatedData.config.data;
+    res.status(200).json({ message: "Data posted successfully", result });
   } catch (error) {
     console.error("Error posting data to Google Sheet:", error);
     res.status(500).json({ message: "Internal server error", error });
